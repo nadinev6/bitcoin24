@@ -1,0 +1,34 @@
+{
+  "ignorePatterns": [
+    {
+      "pattern": "^https://github\\.com/yourusername/bitcoin24"
+    },
+    {
+      "pattern": "^https://bitcoin24-delta\\.vercel\\.app"
+    },
+    {
+      "pattern": "^https://query1\\.finance\\.yahoo\\.com"
+    }
+  ],
+  "timeout": "60s",
+  "retryOn429": true,
+  "retryCount": 5,
+  "fallbackRetryDelay": "10s",
+  "aliveStatusCodes": [200, 206],
+  "httpHeaders": [
+    {
+      "urls": ["https://github.com", "https://www.github.com"],
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (compatible; Bitcoin24-Docs/1.0)"
+      }
+    }
+  ],
+  "excludeLinks": [
+    "https://img.shields.io/badge/Bitcoin-Tracker-orange",
+    "https://img.shields.io/badge/Status-Production%20Ready-green",
+    "https://img.shields.io/badge/Deployed-Vercel-blue",
+    "https://img.shields.io/badge/Database-Tiger%20Data-BlueViolet",
+    "https://img.shields.io/badge/Next.js-16-black",
+    "https://img.shields.io/badge/TimescaleDB-Hypertable-red"
+  ]
+}

@@ -1,0 +1,67 @@
+name: Documentation Validation
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - '**.md'
+      - 'examples/**'
+  pull_request:
+    branches: [ main, develop ]
+    paths:
+      - '**.md'
+      - 'examples/**'
+
+jobs:
+  validate-documentation:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: Install dependencies
+      run: |
+        npm install -g markdown-link-check@latest
+        npm install -g markdownlint-cli@latest
+        
+    - name: Check Markdown links
+      run: |
+        # Find all markdown files and check links
+        find . -name "*.md" -not -path "./node_modules/*" | xargs markdown-link-check --config .mlc-config.json
+        
+    - name: Lint Markdown files
+      run: |
+        # Lint markdown files for formatting issues
+        find . -name "*.md" -not -path "./node_modules/*" | xargs markdownlint
+        
+    - name: Check for placeholder content
+      run: |
+        # Basic check for common placeholder patterns that should be replaced
+        echo "Checking for placeholder content..."
+        if grep -r "TODO\|FIXME\|yourusername\|your-repo\|example\.com" .; then
+          echo "⚠️  Found placeholder content that should be updated before publishing"
+        else
+          echo "✅ No placeholder content found"
+        fi
+        
+    - name: Check repository structure
+      run: |
+        echo "Checking required files..."
+        # Verify essential files exist
+        test -f README.md || (echo "ERROR: README.md missing" && exit 1)
+        test -f LICENSE || (echo "ERROR: LICENSE missing" && exit 1)
+        test -f CONTRIBUTING.md || (echo "ERROR: CONTRIBUTING.md missing" && exit 1)
+        test -f .gitignore || (echo "ERROR: .gitignore missing" && exit 1)
+        
+        # Check directory structure
+        test -d examples/ || (echo "ERROR: examples/ directory missing" && exit 1)
+        test -d .github/ || (echo "ERROR: .github/ directory missing" && exit 1)
+        
+        echo "✅ All required files and directories present"
