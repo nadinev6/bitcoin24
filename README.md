@@ -1,8 +1,9 @@
-# 🚀 Bitcoin24: Financial Data Recovery & Historical Data Knowledge Base
+# <img src="bitcoin-logo.svg" width="28" height="28"> Bitcoin24: Financial Data Recovery & Historical Data Knowledge Base
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![GitHub issues](https://img.shields.io/github/issues/nadinev6/bitcoin24)](https://github.com/nadinev6/bitcoin24/issues)
 [![GitHub stars](https://img.shields.io/github/stars/nadinev6/bitcoin24)](https://github.com/nadinev6/bitcoin24/stargazers)
+
 ![Bitcoin Tracker](https://img.shields.io/badge/Bitcoin-Tracker-orange?style=for-the-badge&logo=bitcoin)
 ![Status](https://img.shields.io/badge/Status-Production%20Ready-green?style=for-the-badge)
 ![Deployed](https://img.shields.io/badge/Deployed-Vercel-blue?style=for-the-badge)
@@ -25,7 +26,7 @@
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/bitcoin24.git
+git clone https://github.com/nadinev6/bitcoin24.git
 cd bitcoin24
 
 # Explore the knowledge base
